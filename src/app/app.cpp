@@ -484,6 +484,9 @@ int App::processConverter(const CommandLineParser::ConverterTask& task)
     case CommandLineParser::ConvertType::ConvertScoreParts:
         ret = converter()->convertScoreParts(task.inputFile, task.outputFile, stylePath);
         break;
+    case CommandLineParser::ConvertType::SaveOnline:
+        ret = converter()->saveOnline(task.inputFile, task.outputFile, stylePath);
+        break;
     case CommandLineParser::ConvertType::ExportScoreMedia: {
         io::path_t highlightConfigPath = task.params[CommandLineParser::ParamKey::HighlightConfigPath].toString();
         ret = converter()->exportScoreMedia(task.inputFile, task.outputFile, highlightConfigPath, stylePath, forceMode);

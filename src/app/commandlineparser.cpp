@@ -90,7 +90,8 @@ void CommandLineParser::init()
     m_parser.addOption(QCommandLineOption({ "P", "export-score-parts" }, "Use with '-o <file>.pdf', export score and parts"));
     m_parser.addOption(QCommandLineOption({ "f", "force" },
                                           "Use with '-o <file>', ignore warnings reg. score being corrupted or from wrong version"));
-
+    m_parser.addOption(QCommandLineOption("save-online",
+                                          "Upload score(s) to their source URL. Replaces existing online score(s)."));
     m_parser.addOption(QCommandLineOption("score-media",
                                           "Export all media (excepting mp3) for a given score in a single JSON file and print it to stdout"));
     m_parser.addOption(QCommandLineOption("highlight-config", "Set highlight to svg, generated from a given score", "highlight-config"));
@@ -298,6 +299,12 @@ void CommandLineParser::parse(int argc, char** argv)
         m_runMode = IApplication::RunMode::ConsoleApp;
         m_converterTask.type = ConvertType::Batch;
         m_converterTask.inputFile = fromUserInputPath(m_parser.value("j"));
+    }
+
+    if (m_parser.isSet("save-online")) {
+        m_runMode = IApplication::RunMode::ConsoleApp;
+        m_converterTask.type = ConvertType::SaveOnline;
+        m_converterTask.inputFile = scorefiles[0];
     }
 
     if (m_parser.isSet("score-media")) {

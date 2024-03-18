@@ -40,7 +40,8 @@ public:
 
     virtual Ret convertScoreParts(const io::path_t& in, const io::path_t& out,
                                   const io::path_t& stylePath = io::path_t(), bool forceMode = false) = 0;
-
+    virtual Ret saveOnline(const io::path_t& in, const io::path_t& out,
+                                  const io::path_t& stylePath = io::path_t(), bool forceMode = false) = 0;
     virtual Ret exportScoreMedia(const io::path_t& in, const io::path_t& out,
                                  const io::path_t& highlightConfigPath = io::path_t(),
                                  const io::path_t& stylePath = io::path_t(), bool forceMode = false) = 0;

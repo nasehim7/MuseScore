@@ -318,6 +318,14 @@ mu::Ret ConverterController::convertScorePartsToPngs(INotationWriterPtr writer, 
     return make_ret(Ret::Code::Ok);
 }
 
+mu::Ret ConverterController::saveOnline(INotationWriterPtr writer, mu::notation::IMasterNotationPtr masterNotation,
+                                                     const io::path_t& out) const
+{
+    TRACEFUNC;
+
+    return BackendApi::saveOnline(in, out, stylePath);
+}
+
 mu::Ret ConverterController::exportScoreMedia(const mu::io::path_t& in, const mu::io::path_t& out,
                                               const mu::io::path_t& highlightConfigPath,
                                               const io::path_t& stylePath, bool forceMode)

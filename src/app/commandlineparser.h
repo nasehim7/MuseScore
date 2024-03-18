@@ -96,6 +96,7 @@ public:
         File,
         Batch,
         ConvertScoreParts,
+        SaveOnline,
         ExportScoreMedia,
         ExportScoreMeta,
         ExportScoreParts,
